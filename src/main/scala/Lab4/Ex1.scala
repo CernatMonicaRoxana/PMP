@@ -26,7 +26,7 @@ object Ex1 {
 
 	val sideOfTheBed = If (
 		rightSideOfTheBed, // daca ne trezim pe partea dreapta
-		Select(0.6 -> "Hello, world!", 0.4 -> "Howdy, universe!"), // greeting-ul zilei de astazi este "hello world" cu prob de 0.6, iar howdy universe cu prob 0.5
+		greetingToday, // greeting-ul zilei de astazi este "hello world" cu prob de 0.6, iar howdy universe cu prob 0.5
 		Select(1.0 -> "Oh no, not again") // daca ne trezim pe partea stanga greetingul zilei de astazi este "oh..." cu prob 1
 	)
 

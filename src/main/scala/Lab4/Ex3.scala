@@ -19,8 +19,8 @@ package Lab4{
       val y = Flip(0.4)
       // variabilei z i-a fost asignata valoarea vraiabilei y
       val z = y
-      // probabilitatea oricarei combinatii de valori de adevar e de 0.25
-      // ca cele 2 valori sa aiba aceeasi valoare de adevar este de 0.5
+      // probabilitatea oricarei combinatii de valori de adevar e de 0.25 (t - t = 0.4 * 0.4 = 0.16)(f-f = 0.6*0.6 = 0.36)
+      // ca cele 2 valori sa aiba aceeasi valoare de adevar este de 0.5 ( 0.16 + 0.32 = 0.5)
       val w = x === z
       println(VariableElimination.probability(w, true))
     */

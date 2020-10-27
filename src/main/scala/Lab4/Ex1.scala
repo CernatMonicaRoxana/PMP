@@ -22,12 +22,12 @@ object Ex1 {
 		Select(0.2 -> "Hello, world!", 0.8 -> "Oh no, not again")
 		)
 
-	val rightSideOfTheBed = Flip(0.5)
+	val rightSideOfTheBed = Flip(0.5) // Probabiliatea ca sa ne trezim pe partea dreapta a patului este de 0.5, iar pe partea rea tot de 0.5
 
 	val sideOfTheBed = If (
-		rightSideOfTheBed,
-		Select(0.6 -> "Hello, world!", 0.4 -> "Howdy, universe!"),
-		Select(1.0 -> "Oh no, not again")
+		rightSideOfTheBed, // daca ne trezim pe partea dreapta
+		Select(0.6 -> "Hello, world!", 0.4 -> "Howdy, universe!"), // greeting-ul zilei de astazi este "hello world" cu prob de 0.6, iar howdy universe cu prob 0.5
+		Select(1.0 -> "Oh no, not again") // daca ne trezim pe partea stanga greetingul zilei de astazi este "oh..." cu prob 1
 	)
 
 	def predictWrongSideOfTheBed(): Unit = {

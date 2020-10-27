@@ -4,7 +4,7 @@ import com.cra.figaro.library.compound.If
 
 package object Lab4
 
-object Ex2 {
+object Ex2a {
   val sunnyToday = Flip(0.2)
 
   val greetingToday = If(

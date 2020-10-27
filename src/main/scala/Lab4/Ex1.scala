@@ -22,6 +22,19 @@ object Ex1 {
 		Select(0.2 -> "Hello, world!", 0.8 -> "Oh no, not again")
 		)
 
+	val rightSideOfTheBed = Flip(0.5)
+
+	val sideOfTheBed = If (
+		rightSideOfTheBed,
+		Select(0.6 -> "Hello, world!", 0.4 -> "Howdy, universe!"),
+		Select(1.0 -> "Oh no, not again")
+	)
+
+	def predictWrongSideOfTheBed(): Unit = {
+		val res = VariableElimination.probability(sideOfTheBed, "Oh no, not again!")
+		println("I got out of the wrong side of the bed with probability " + res)
+	}
+
 	def predict() {
 		val result = VariableElimination.probability(greetingToday, "Hello, world!")
 		println("Today’s greeting is \"Hello, world!\" " +
@@ -43,6 +56,7 @@ object Ex1 {
 
 
 	def main(args: Array[String]) {
+		predictWrongSideOfTheBed()
 		predict()
 		infer()
 		learnAndPredict()

@@ -7,6 +7,34 @@ import com.cra.figaro.language.{Flip, Constant, Apply}
 import com.cra.figaro.algorithm.factored.VariableElimination
 
 object Ex1 {
+	/* // 1
+		5 carti
+		2 jucatori
+		primul jucator extrage o carte *oricare*
+		al doilea extrage o carte conditionat de faptul ca primul jucator a extras si el o carte *4 ramase*
+		pentru fiecare carte a primului jucator exista 4 lumi diferite -> 5 * 4 = 20 lumi ->  o lume are probabilitatea 1/20
+	 */
+
+	/*
+	 // 2
+	 stim sigur ca ne aflam intr-o lume in care player1 nu are rege/ regina - > 4 lumi petru fiecare carte = 16
+	 prob ca al 2-lea player sa aiba ace stiind ca primul are rege/regina
+	 -> rege de spada => 2 carti cu simbolul spada
+	 -> rege inima =>  3 carti cu spada
+	 analog regina
+	 ->  5 + 5/ 16 -> probab ca al 2-lea jucator sa aiba o spada = 10 / 16
+	 */
+
+	/*
+		// 3
+		variabile : cartile, cartile extrase de jucatori, care jucator pariaza sau paseaza
+		dependente :
+		-> cartea aleasa de jucatorul 2 este conditionata de cartea aleasade jucatorul 1
+		-> playerul 1 pariaza sau paseaza in functie de cartea pe care o are
+		-> playerul 2 pariaza daca are carte ft mare(ace sau rege de spada) sau daca primul jucator nu a pariat
+		->playerul 1 pariaza daca nu a priat in prima tura, daca al doilea jucator a pariat si daaca are o carte ft mare
+
+	 */
 	def main(args: Array[String]) {
 		// To keep the code simple, I just make the cards an integer
 		val cards = List(5, 4, 3, 2, 1)
@@ -21,8 +49,8 @@ object Ex1 {
 			RichCPD(player1Card,
 				// Player 1 is more likely to bet with a higher card,
 				// but will sometimes bet with a lower card to bluff
-				OneOf(5, 4, 3) -> Flip(0.01),
-				* -> Flip(0.4) // ×××Change this for part (c)×××
+				OneOf(5, 4, 3) -> Flip(0.9),
+				* -> Flip(0.01) // ×××Change this for part (c)×××
 			)
 		val player2Bet =
 			RichCPD(player2Card, player1Bet1,

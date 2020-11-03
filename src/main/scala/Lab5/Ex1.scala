@@ -104,5 +104,43 @@ object Ex1 {
 		alg4.start()
 		alg4.stop()
 		println("Expected gain for passing:" + alg4.mean(player1Gain))
+		player2Card.unobserve()
+		player1Bet1.unobserve()
+		player2Bet.unobserve()
+
+		//5
+
+		val seq = Apply(
+							player1Card, player2Card, player1Bet1, player2Bet,
+							(card1: Int, card2: Int, bet11:Boolean, bet2:Boolean) =>
+								if(card1 == 5 && card2 == 4 && bet11 && bet2) 1.0
+								else 0.0
+							)
+		val alg5 = VariableElimination(seq)
+		alg5.start()
+		alg5.stop()
+		println("Seq0: " + alg5.mean(seq))
+
+		val seq1 = Apply(player1Card, player2Card, player1Bet1,player2Bet, player1Bet2,
+			(card1: Int, card2: Int, bet11:Boolean, bet2:Boolean, bet12:Boolean) =>
+				if (card1 == 4 && card2 == 3 && !bet11 && bet2 && bet12) 2.0
+				else 0.0
+		)
+		val alg6 = VariableElimination(seq1)
+		alg6.start()
+		alg6.stop()
+		println("Seq1: " + alg6.mean(seq1))
+
+		val seeq2 = Apply(
+			player1Card, player2Card, player1Bet1,player2Bet, player1Bet2,
+				(card1: Int, card2: Int, bet11:Boolean, bet2:Boolean, bet12:Boolean) =>
+					if(card1 == 2 && card2 == 3 && !bet11 && !bet2) 0.0
+					else -1.0)
+
+		val alg7 = VariableElimination(seeq2)
+		alg7.start()
+		alg7.stop()
+		println("Seq2: " + alg7.mean(seeq2))
+
 	}
 	}

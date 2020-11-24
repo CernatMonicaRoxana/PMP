@@ -11,5 +11,6 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="scala-sdk-2.12.12" level="application" />
     <orderEntry type="library" name="figaro_2.12-5.0.0.0" level="project" />
+    <orderEntry type="library" name="scala-sdk-2.12.12" level="application" />
   </component>
 </module>

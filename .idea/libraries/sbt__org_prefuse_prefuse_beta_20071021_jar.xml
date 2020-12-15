@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="sbt: org.prefuse:prefuse:beta-20071021:jar">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/lib_managed/jars/org.prefuse/prefuse/prefuse-beta-20071021.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

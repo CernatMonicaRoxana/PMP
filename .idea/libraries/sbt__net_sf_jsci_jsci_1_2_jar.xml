@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="sbt: net.sf.jsci:jsci:1.2:jar">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/lib_managed/jars/net.sf.jsci/jsci/jsci-1.2.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$PROJECT_DIR$/lib_managed/srcs/net.sf.jsci/jsci/jsci-1.2-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

@@ -4,7 +4,7 @@ import com.cra.figaro.language._
 import com.cra.figaro.algorithm.sampling._
 import com.cra.figaro.library.compound.If
 
-object Ex6 {
+object 	Ex6 {
 	/* Functia primeste ca si parametru probabilitatea ca primul jucator sa castige din prima serva, probabilitatea sa castige si probabilitatea sa greseasca, analog pentru jucatorul 2*/
 	def tennis (probP1ServeWin: Double, probP1Winner: Double, probP1Error: Double,
 							probP2ServeWin: Double, probP2Winner: Double, probP2Error: Double): Element[Boolean] = {

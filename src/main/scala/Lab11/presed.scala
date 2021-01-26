@@ -3,70 +3,49 @@ package Lab11
 import com.cra.figaro.language._
 import com.cra.figaro.library.compound._
 import com.cra.figaro.algorithm.factored._
+import com.cra.figaro.algorithm.factored.beliefpropagation.BeliefPropagation
 import com.cra.figaro.algorithm.sampling.Importance
 
 
 object presed {
 
-	val pres = 1 / 40000000
-//	print(pres)
-	val presedinti = Flip(pres)
+	def main(args: Array[String])
+	{
+		val isPresident = Flip(1.0/40000000.0)
 
-	/*
-	50% din presedinti stangaci,
-	10% pop generala
-	 */
-	val stangaci = CPD(presedinti,
-		(true) -> Flip(0.5),
-		(false) -> Flip(0.1)
-	)
+		val isLeftHandedPresident = Flip(1.0/2.0)
+		val isLeftHandedGeneral = Flip(1.0/10.0)
 
-	/*
-	15% din pres au fost la Harvard
-	1 / 2000 din pop generala
-	 */
-	val Harvard = CPD(presedinti,
-		(true) -> Flip(0.15),
-		(false) -> Flip(0.0005)
-	)
+		val isLeftHanded = If(isPresident, isLeftHandedPresident, isLeftHandedGeneral)
 
-	val both = CPD(stangaci, Harvard,
-		(true, true) -> Flip(0.075),
-		(true, false) -> Flip(0.00025),
-		(false, true) -> Flip(0.015),
-		(false, false) -> Flip(0.00005)
-	)
+		isLeftHanded.observe(true)
 
-	def main(args: Array[String]) {
+		println('a')
+		println(VariableElimination.probability(isPresident, true))
+		println(BeliefPropagation.probability(isPresident, true))
+		println(Importance.probability(isPresident, true))
+		println()
 
-		stangaci.observe(true)
+		isLeftHanded.unobserve()
 
-		val alg1 = VariableElimination(presedinti, stangaci)
-		alg1.start()
-		println("Probabilitatea sa ajunga presedinte daca e stangaci : " + alg1.probability(presedinti, true))
-		alg1.kill()
-		stangaci.unobserve()
+		val wentToHarvardPresident = Flip(3.0/20.0)
+		val wentToHarvardGeneral = Flip(1.0/2000.0)
 
-		Harvard.observe(true)
+		val wentToHarvard = If(isPresident, wentToHarvardPresident, wentToHarvardGeneral)
 
-		val alg2 = VariableElimination(presedinti, Harvard)
-		alg2.start()
-		println("Probabilitatea sa ajunga presedinte daca a invatat la Harvard : " + alg2.probability(presedinti, true))
-		alg2.kill()
-		Harvard.unobserve()
+		wentToHarvard.observe(true)
 
-		Harvard.observe(true)
-		stangaci.observe(true)
-		both.observe(true)
+		println('b')
+		println(VariableElimination.probability(isPresident, true))
+		println(BeliefPropagation.probability(isPresident, true))
+		println(Importance.probability(isPresident, true))
+		println()
 
-		val alg3 = VariableElimination(presedinti, both)
-		alg3.start()
-		println("Probabilitatea sa ajunga presedinte daca a invatat la Harvard si e stangaci : " + alg3.probability(presedinti, true))
-		alg3.kill()
-		Harvard.unobserve()
+		println('c')
+		isLeftHanded.observe(true)
+		println(VariableElimination.probability(isPresident, true))
+		println(BeliefPropagation.probability(isPresident, true))
+		println(Importance.probability(isPresident, true))
 
-		val alg4 = Importance(100, stangaci)
-		alg4.start()
-		println("Probabilitatea ca un presedinte nu sa fie stangaci: "+ alg4.probability(stangaci, false))
 	}
 }

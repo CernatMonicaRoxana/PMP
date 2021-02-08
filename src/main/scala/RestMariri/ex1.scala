@@ -29,6 +29,7 @@ object ex1 {
   )
 
   def main(args: Array[String]): Unit = {
+    // nu imi merge sa compilez, lucrez in acelasi proiect si imi gaseste erorile din alt fisier
     println("Probabilitatea ca nr de zile in care ninge sa duca la o calitate normala a saptamanii este " + VariableElimination.probability(calitateSapt, "normala") )
   }
 

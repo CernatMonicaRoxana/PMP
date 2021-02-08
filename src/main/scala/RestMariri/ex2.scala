@@ -13,6 +13,7 @@ object ex2 {
   val temperature = Normal(mean, variance)
 
   //b
+  // cu probabilitati egale se aleg valorile pentru varianta
   variance = Select(0.5 -> 20, 0.5 -> 30)
 
   //B
